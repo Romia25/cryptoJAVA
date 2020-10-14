@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"cryptojava"},{"l":"cryptojava.classes"},{"l":"cryptojava.interfaces"}]
