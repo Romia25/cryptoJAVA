@@ -5,8 +5,8 @@
  */
 package interfacegraphique;
 
-import com.interfacegraphique.Presentation;
-import cryptojava.classes.KeyGeneration;
+import cryptojava.classes.Dechiffrement;
+import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -14,12 +14,12 @@ import javax.swing.JOptionPane;
  *
  * @author hp
  */
-public class GenerateKeyGra extends javax.swing.JFrame {
+public class DecipherPass extends javax.swing.JFrame {
 
     /**
-     * Creates new form GenerateKeyGra
+     * Creates new form CipherPass
      */
-    public GenerateKeyGra() {
+    public DecipherPass() {
         initComponents();
     }
 
@@ -35,34 +35,32 @@ public class GenerateKeyGra extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        repoKey = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        passwd = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        keyFile = new javax.swing.JTextField();
+        texti = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setForeground(new java.awt.Color(0, 255, 255));
-        jPanel1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 255, 255));
-        jLabel1.setText("Key Generation...");
+        jLabel1.setText("Decipher with password...");
 
-        jLabel2.setText("Choose repository where you want to store your key");
+        jLabel2.setText("Enter password, please");
 
-        jButton1.setText("Select");
+        jLabel3.setText("Choose file to be deciphered, please");
+
+        jButton1.setText("Deccrypt");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Enter file's name where to store key ");
-
-        jButton2.setText("Generate key");
+        jButton2.setText("Select");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -74,46 +72,46 @@ public class GenerateKeyGra extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(repoKey, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(105, 105, 105)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(25, 25, 25)
+                            .addGap(47, 47, 47)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(keyFile, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(70, 70, 70)))))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(131, 131, 131)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(124, 124, 124)
+                            .addComponent(jButton1))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(64, 64, 64)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(passwd)
+                            .addComponent(texti, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(19, 19, 19)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(repoKey, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(passwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(keyFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(texti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(35, 35, 35))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -136,34 +134,39 @@ public class GenerateKeyGra extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        JFileChooser jfc = new JFileChooser();
-        jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int ret = jfc.showOpenDialog(null); // ne te rend la main que si tu ferme
-        if(ret == JFileChooser.APPROVE_OPTION) { // validation
-            String dest = jfc.getSelectedFile().toString();
-            repoKey.setText(dest);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
-        KeyGeneration keygen = new KeyGeneration();
-        String Dest;
-        Dest = repoKey.getText() + "\\" + keyFile.getText()+ ".txt";
-        //keygen.keyGeneration(Dest);
-        if(keygen.keyGeneration(Dest)){
-            JOptionPane.showMessageDialog(null, "Key generation is a success!!!");
-        }
-        //keygen.recupKey(Dest);
-        
-        //
-        SecretKeyCiphering skc = new SecretKeyCiphering();
-        skc.setVisible(true);
-        this.dispose();
+        JFileChooser choice2 = new JFileChooser();
+        //choice1.setFileSelectionMode(JFileChooser.);
+        choice2.showOpenDialog(null);
+        File f = choice2.getSelectedFile();
+        String filename = f.getAbsolutePath();
+        texti.setText(filename);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        char[] passer = passwd.getText().toCharArray();
+        //generate the key
+        //KeyGeneration klk = new KeyGeneration();
+        //SecretKey key = klk.keyGen(passer);
+        
+       //do cipher
+        Dechiffrement dechif = new Dechiffrement();
+        String mes = texti.getText();
+        String destina = mes.substring(0, mes.length() - 3);
+        String des = destina + "decip";
+        if(dechif.runCipher(passer, mes, des)){
+            JOptionPane.showMessageDialog(null, "Succesfully deciphered!!!");
+        }
+        
+        Welcoming w = new Welcoming();
+        w.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,20 +185,21 @@ public class GenerateKeyGra extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GenerateKeyGra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DecipherPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GenerateKeyGra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DecipherPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GenerateKeyGra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DecipherPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GenerateKeyGra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DecipherPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GenerateKeyGra().setVisible(true);
+                new DecipherPass().setVisible(true);
             }
         });
     }
@@ -207,7 +211,7 @@ public class GenerateKeyGra extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField keyFile;
-    private javax.swing.JTextField repoKey;
+    private javax.swing.JTextField passwd;
+    private javax.swing.JTextField texti;
     // End of variables declaration//GEN-END:variables
 }

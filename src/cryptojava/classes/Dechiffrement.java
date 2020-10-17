@@ -37,5 +37,21 @@ public class Dechiffrement extends Chiffrement{
         return null;
     }
     
+    @Override
+    public Cipher getCipher(char [] password) {
+        KeyGeneration kl = new KeyGeneration();
+        SecretKey key = kl.keyGen(password);
+        
+        try {
+            Cipher c = Cipher.getInstance(ICryptoConfig.transform);
+            c.init(Cipher.DECRYPT_MODE, key, new IvParameterSpec(ICryptoConfig.iv.getBytes()));
+            return c;
+        } catch (InvalidAlgorithmParameterException | InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException  ex) {
+            Logger.getLogger(Chiffrement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    
     
 }

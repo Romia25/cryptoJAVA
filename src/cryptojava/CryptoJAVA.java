@@ -42,6 +42,9 @@ public class CryptoJAVA {
         
         //Dechiffrement dec = new Dechiffrement();
         //dec.runCipher("./vendu.txt", "./vend.txt", "./clé.txt");
+        
+        Dechiffrement dec = new Dechiffrement();
+        dec.runCipher("linda".toCharArray(), "vendito.txt", "benita.txt");
 
    }
     

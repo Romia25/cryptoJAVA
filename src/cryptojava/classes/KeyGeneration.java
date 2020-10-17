@@ -107,8 +107,8 @@ public class KeyGeneration implements IKeyGeneration{
         
             kdfFactory = SecretKeyFactory.getInstance(ICryptoConfig.kdf);
              SecretKey keyPBE = kdfFactory.generateSecret(pbe);
-           //clepbe=new SecretKeySpec(keyPBE.getEncoded(), ICryptoConfig.algo);
-           return keyPBE;
+           clepbe=new SecretKeySpec(keyPBE.getEncoded(), ICryptoConfig.algo);
+           return clepbe;
 	
         } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
             Logger.getLogger(KeyGeneration.class.getName()).log(Level.SEVERE, null, ex);
